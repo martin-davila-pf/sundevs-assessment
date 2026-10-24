@@ -1,0 +1,34 @@
+# Estado local de Terraform y valores sensibles
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+!terraform.tfvars.example
+crash.log
+crash.*.log
+.terraformrc
+terraform.rc
+
+# Credenciales y entorno local
+.env
+.env.*
+!.env.example
+.aws/
+*.pem
+*.key
+
+# Python y paquetes generados
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+build/
+*.zip
+
+# Editor y sistema operativo
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

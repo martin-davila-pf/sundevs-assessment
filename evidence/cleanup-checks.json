@@ -1,0 +1,18 @@
+{
+  "fecha_de_comprobacion": "2026-10-24T21:12:14.381852+00:00",
+  "region": "us-east-1",
+  "despliegue": "sre-assessment-85e4201d",
+  "comprobaciones": {
+    "redis": "ausente",
+    "lambda": "ausente",
+    "bucket": "ausente",
+    "api": "ausente",
+    "ip_elastica": "ausente",
+    "vpc": "ausente",
+    "rol_iam_de_lambda": "ausente",
+    "nat_gateway": "eliminado",
+    "logs_de_lambda": "ausente",
+    "logs_de_api": "ausente"
+  },
+  "nota": "Comprobacion hecha con lecturas independientes a las API de AWS despues de eliminar el stack, no solo con el estado de Terraform."
+}

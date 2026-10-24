@@ -1,0 +1,12 @@
+{
+  "despliegue": "sre-assessment-85e4201d",
+  "region": "us-east-1",
+  "terraform_apply": "Apply complete! Resources: 39 added, 0 changed, 0 destroyed.",
+  "terraform_destroy": "Destroy complete! Resources: 39 destroyed.",
+  "recursos_creados": 39,
+  "recursos_eliminados": 39,
+  "resultado_end_to_end": "HTTP 200 X-Cache: MISS seguido de HTTP 200 X-Cache: HIT con respuestas identicas",
+  "objeto_guardado": "results/2026-10-24/441426a050598727ff11a4aeb76572f3ac906cd562563d4432bf57ca0eca2f28.json",
+  "tamano_en_bytes_del_objeto": 409,
+  "nota": "El stack completo se creo, se verifico end-to-end y se elimino. La comprobacion de limpieza se realizo con lecturas independientes a las API de AWS, no solo con el estado de Terraform."
+}

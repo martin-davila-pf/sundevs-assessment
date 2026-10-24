@@ -1,0 +1,102 @@
+{
+  "despliegue": "sre-assessment-85e4201d",
+  "region": "us-east-1",
+  "nota": "Valores de configuracion tomados del plan que Terraform aplico, contrastados con lecturas directas a las API de AWS sobre el despliegue final mientras estaba en ejecucion.",
+  "s3": {
+    "bloqueo_de_acceso_publico": {
+      "block_public_acls": true,
+      "block_public_policy": true,
+      "ignore_public_acls": true,
+      "region": "us-east-1",
+      "restrict_public_buckets": true,
+      "skip_destroy": null
+    },
+    "estado_del_versionado": "Enabled",
+    "cifrado_lado_servidor": "AES256",
+    "denegaciones_de_la_politica_del_bucket": [
+      "operaciones de objeto a cualquier principal distinto del rol de la funcion",
+      "operaciones de objeto fuera del VPC endpoint de S3",
+      "cualquier peticion sin TLS"
+    ],
+    "acciones_s3_del_rol_de_lambda": [
+      "s3:PutObject"
+    ],
+    "prefijo_s3_del_rol_de_lambda": "results/*"
+  },
+  "redis": {
+    "engine": "redis",
+    "engine_version": "7.1",
+    "node_type": "cache.t3.micro",
+    "num_cache_clusters": 1,
+    "transit_encryption_enabled": true,
+    "at_rest_encryption_enabled": true,
+    "auth_token_enabled": true,
+    "multi_az_enabled": false,
+    "automatic_failover_enabled": false,
+    "snapshot_retention_limit": 0,
+    "subnet_group": "sre-assessment-85e4201d",
+    "estado_en_vivo": "available",
+    "miembros_en_vivo": [
+      "sre-assessment-85e4201d-001"
+    ]
+  },
+  "red": {
+    "cidr_de_la_vpc": "10.42.0.0/16",
+    "subnets_publicas": [
+      "10.42.0.0/24",
+      "10.42.1.0/24"
+    ],
+    "subnets_privadas": [
+      "10.42.10.0/24",
+      "10.42.11.0/24"
+    ],
+    "zonas_de_disponibilidad": [
+      "us-east-1a",
+      "us-east-1b"
+    ],
+    "nat_gateways": 1,
+    "subnet_del_nat": "subnet-008186e0bbd54886d",
+    "endpoint_gateway_de_s3": "vpce-05fbb89dd6b9979ae",
+    "ingreso_a_redis": {
+      "puerto": 6379,
+      "protocolo": "tcp",
+      "origen": "security group de Lambda (referenciado, sin CIDR abierto)",
+      "cidr_origenes": []
+    },
+    "salida_de_lambda": [
+      {
+        "destino": "Redis",
+        "puerto": 6379
+      },
+      {
+        "destino": "lista de prefijos de S3 (VPC endpoint)",
+        "puerto": 443
+      }
+    ],
+    "asignacion_automatica_de_ip_publica": false
+  },
+  "api": {
+    "protocolo": "HTTP",
+    "ruta": "POST /process",
+    "integracion": "AWS_PROXY",
+    "payload_format_version": "2.0",
+    "cors_origenes_permitidos": [
+      "*"
+    ],
+    "cors_cabeceras_expuestas": [
+      "X-Cache"
+    ],
+    "limite_de_solicitudes_por_segundo": 1,
+    "rafaga_maxima": 2,
+    "registro_de_accesos": true
+  },
+  "lambda": {
+    "runtime": "python3.12",
+    "handler": "handler.handler",
+    "memoria_mb": 128,
+    "timeout_segundos": 10,
+    "subnets_privadas": "subnet-0ff61e926d9154b7c",
+    "security_group": "sg-016e0faef1cd76d02",
+    "retencion_dias_del_grupo_de_logs": 1
+  }
+}
